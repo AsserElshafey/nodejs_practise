@@ -4,7 +4,13 @@ import { IProduct } from "../interfaces";
 import { title } from "process";
 
 export default class ProductController {
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) {
+    this.getAllProducts = this.getAllProducts.bind(this);
+    this.getProductById = this.getProductById.bind(this);
+    this.createProduct = this.createProduct.bind(this);
+    this.updateProduct = this.updateProduct.bind(this);
+    this.deleteProduct = this.deleteProduct.bind(this);
+  }
 
   getAllProducts(req: Request, res: Response) {
     const filterQuery = req.query.filter as string;

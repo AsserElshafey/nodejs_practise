@@ -1,9 +1,9 @@
 import express from "express";
 import { generateProducts } from "./utils/fakeData";
-import { IProduct } from "./interfaces";
 import ProductService from "./services/ProductService";
 import ProductController from "./controllers/productController";
 import path from "path";
+import productsRouter from "./routes/productsRoute";
 
 const app = express();
 
@@ -37,26 +37,7 @@ app.get("/products/:id", (req, res) =>
 );
 
 // endpoints (Products)
-
-app.get("/api/products", (req, res) =>
-  productController.getAllProducts(req, res)
-);
-
-app.get("/api/products/:id", (req, res) =>
-  productController.getProductById(req, res)
-);
-
-app.post("/api/products", (req, res) =>
-  productController.createProduct(req, res)
-);
-
-app.patch("/api/products/:id", (req, res) =>
-  productController.updateProduct(req, res)
-);
-
-app.delete("/api/products/:id", (req, res) =>
-  productController.deleteProduct(req, res)
-);
+app.use("/api/products", productsRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}/`);
