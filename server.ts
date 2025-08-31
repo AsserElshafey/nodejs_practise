@@ -2,6 +2,7 @@ import express from "express";
 import { generateProducts } from "./utils/fakeData";
 import ProductService from "./services/ProductService";
 import ProductController from "./controllers/productController";
+import ProductsViewController from "./controllers/productsViewController";
 import path from "path";
 import productsRouter from "./routes/productsRoute";
 
@@ -13,6 +14,7 @@ const fakeProducts = generateProducts();
 
 const productService = new ProductService(fakeProducts);
 const productController = new ProductController(productService);
+const productsViewController = new ProductsViewController(productService);
 
 app.use(express.json());
 
@@ -29,11 +31,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/products", (req, res) =>
-  productController.renderProductsList(req, res)
+  productsViewController.renderProductsList(req, res)
 );
 
 app.get("/products/:id", (req, res) =>
-  productController.renderProductPage(req, res)
+  productsViewController.renderProductPage(req, res)
 );
 
 // endpoints (Products)
