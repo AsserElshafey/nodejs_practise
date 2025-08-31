@@ -4,6 +4,7 @@ type ProductBody = {
   name: string;
   price: string;
   description: string;
+  imageURL: string;
 };
 
 export default class ProductService {
