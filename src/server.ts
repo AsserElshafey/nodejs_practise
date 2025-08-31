@@ -15,8 +15,10 @@ const productController = new ProductController(productService);
 
 app.use(express.json());
 
+app.set("view engine", "pug");
+
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.render("index", { title: "My Pug Template", message: "Hello there!" });
 });
 
 // endpoints (Products)
