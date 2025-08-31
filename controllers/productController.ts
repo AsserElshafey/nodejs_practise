@@ -1,6 +1,7 @@
 import ProductService from "../services/ProductService";
 import { Request, Response } from "express";
 import { IProduct } from "../interfaces";
+import { title } from "process";
 
 export default class ProductController {
   constructor(private productService: ProductService) {}
@@ -65,5 +66,21 @@ export default class ProductController {
       return res.status(200).send({ message: "product deleted successfully" });
     }
     return res.status(404).send({ message: "product not found" });
+  }
+
+  renderProductsList(req: Request, res: Response) {
+    res.render("products", {
+      title: "My Products",
+      description: "This is the products page rendered by Express.",
+      products: this.productService.getAllProducts(),
+    });
+  }
+
+  renderProductPage(req: Request, res: Response) {
+    const productId = +req.params.id;
+
+    res.render("productDetails", {
+      products: this.productService.getProductById(productId),
+    });
   }
 }
