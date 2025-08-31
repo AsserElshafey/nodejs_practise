@@ -3,6 +3,7 @@ import { generateProducts } from "./utils/fakeData";
 import { IProduct } from "./interfaces";
 import ProductService from "./services/ProductService";
 import ProductController from "./controllers/productController";
+import path from "path";
 
 const app = express();
 
@@ -15,7 +16,12 @@ const productController = new ProductController(productService);
 
 app.use(express.json());
 
+// * set views directory and engine
 app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
+
+// * static file
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
   res.render("index", { title: "My Pug Template", message: "Hello there!" });
