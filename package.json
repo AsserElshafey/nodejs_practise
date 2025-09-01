@@ -13,7 +13,9 @@
   "devDependencies": {
     "@faker-js/faker": "^10.0.0",
     "@tailwindcss/cli": "^4.1.12",
+    "@types/compression": "^1.8.1",
     "@types/express": "^5.0.3",
+    "@types/morgan": "^1.9.10",
     "@types/node": "^24.3.0",
     "nodemon": "^3.1.10",
     "tailwindcss": "^4.1.12",
@@ -21,7 +23,12 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "compression": "^1.8.1",
+    "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.1",
     "pug": "^3.0.3"
   }
 }

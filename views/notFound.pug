@@ -1,5 +1,8 @@
 extends layouts/base
 block content
-    h1 404 - Page Not Found
-    p The page you are looking for does not exist.
-    a(href="/") Go back to Home
+     section.bg-white
+        .py-8.px-4.mx-auto.max-w-screen-xl(class='lg:py-16 lg:px-6')
+            .mx-auto.max-w-screen-sm.text-center
+                h1.mb-4.text-7xl.tracking-tight.font-extrabold.text-primary-600(class='lg:text-9xl dark:text-primary-500') 500
+                p.mb-4.text-3xl.tracking-tight.font-bold.text-gray-900(class='md:text-4xl')= title
+                p.mb-4.text-lg.font-light.text-gray-500(class='dark:text-gray-400')= message
